@@ -1,3 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Poppins:ital,wght@0,300;0,500;0,600;1,700&display=swap');
+
+.dark {
+  --primary-background: #050b1f;
+  --secondary-background: #081130;
+  --text: #fafafa;
+}
+
+.light {
+  --primary-background: #fcf3f9;
+  --secondary-background: #efe7ec;
+  --text: #000000;
+}
+
+.gold {
+  --primary-color: #e0bb42;
+  --secondary-color: #e0e6fa;
+  --accent: #a2831a;
+}
+
+.green {
+  --primary-color: #08c44a;
+  --secodary-color: #0a150b;
+  --accent: #046225;
+}
+
+.pink {
+  --primary-color: #6a1b58;
+  --secondary-color: #f8e2f3;
+  --accent: #7e2068;
+}
+
+.blue {
+  --primary-color: #42c8cd;
+  --secondary-color: #ebf9fa;
+  --accent: #33bdc1;
+}
+
 /*
 ! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
 */
@@ -422,7 +460,7 @@ video {
   display: none;
 }
 
-*, ::before, ::after {
+*, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -472,7 +510,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-::backdrop {
+::backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -522,17 +560,165 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.text-green-600 {
-  --tw-text-opacity: 1;
-  color: rgb(22 163 74 / var(--tw-text-opacity));
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
+.mt-3{
+  margin-top: 0.75rem;
 }
 
-.text-blue-600 {
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
+.mt-4{
+  margin-top: 1rem;
+}
+
+.flex{
+  display: flex;
+}
+
+.h-\[600px\]{
+  height: 600px;
+}
+
+.h-screen{
+  height: 100vh;
+}
+
+.h-\[50px\]{
+  height: 50px;
+}
+
+.h-6{
+  height: 1.5rem;
+}
+
+.w-\[90\%\]{
+  width: 90%;
+}
+
+.w-full{
+  width: 100%;
+}
+
+.w-\[70px\]{
+  width: 70px;
+}
+
+.w-\[calc\(25\%-5px\)\]{
+  width: calc(25% - 5px);
+}
+
+.w-6{
+  width: 1.5rem;
+}
+
+.w-\[calc\(50\%-5px\)\]{
+  width: calc(50% - 5px);
+}
+
+.max-w-\[450px\]{
+  max-width: 450px;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.items-center{
+  align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.gap-2{
+  gap: 0.5rem;
+}
+
+.rounded-md{
+  border-radius: 0.375rem;
+}
+
+.bg-primaryBg{
+  background-color: var(--primary-background);
+}
+
+.bg-secondaryBg{
+  background-color: var(--secondary-background);
+}
+
+.bg-primaryColor{
+  background-color: var(--primary-color);
+}
+
+.bg-\[\#e0bb42\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 187 66 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#08c44a\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(8 196 74 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#6a1b58\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(106 27 88 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#42c8cd\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(66 200 205 / var(--tw-bg-opacity));
+}
+
+.bg-accent{
+  background-color: var(--accent);
+}
+
+.bg-text{
+  background-color: var(--text);
+}
+
+.p-3{
+  padding: 0.75rem;
+}
+
+.font-title{
+  font-family: Chakra Petch, sans-serif;
+}
+
+.font-text{
+  font-family: Poppins, sans-serif;
+}
+
+.text-\[18px\]{
+  font-size: 18px;
+}
+
+.text-\[22px\]{
+  font-size: 22px;
+}
+
+.font-bold{
+  font-weight: 700;
+}
+
+.text-primaryColor{
+  color: var(--primary-color);
+}
+
+.text-accent{
+  color: var(--accent);
+}
+
+@media (min-width: 768px){
+  .md\:text-\[22px\]{
+    font-size: 22px;
+  }
 }
