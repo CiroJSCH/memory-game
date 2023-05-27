@@ -1,17 +1,25 @@
 const difficultyPickers = document.querySelectorAll('.difficulty-picker');
 
-const updateDifficulty = () => {
+const updateDifficulty = (callback: (difficulty: string) => void): void => {
+  let selectedDifficulty = '';
+
+  const handleClick = (event: Event): void => {
+    const difficultyPicker = event.currentTarget as HTMLElement;
+    const difficulty = difficultyPicker.getAttribute('data-difficulty');
+    selectedDifficulty = difficulty || '';
+
+    removePreviousIcon();
+    difficultyPicker.classList.replace('bg-text', 'bg-accent');
+    difficultyPicker.firstElementChild?.classList.replace(
+      'text-accent',
+      'text-secondaryColor',
+    );
+
+    callback(selectedDifficulty);
+  };
+
   difficultyPickers.forEach((difficultyPicker) => {
-    difficultyPicker.addEventListener('click', () => {
-      const difficulty = difficultyPicker.getAttribute('data-icon');
-      console.log(difficulty);
-      removePreviousIcon();
-      difficultyPicker.classList.replace('bg-text', 'bg-accent');
-      difficultyPicker.firstElementChild.classList.replace(
-        'text-accent',
-        'text-secondaryColor',
-      );
-    });
+    difficultyPicker.addEventListener('click', handleClick);
   });
 };
 

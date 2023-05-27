@@ -1,17 +1,24 @@
 const iconPickers = document.querySelectorAll('.icon-picker');
 
-const updateIcon = () => {
+const updateIcon = (callback: (icon: string) => void) => {
+  let selectedIcon = '';
+
+  const handleClick = (event: Event) => {
+    const iconPicker = event.currentTarget as HTMLElement;
+    const icon = iconPicker.getAttribute('data-icon');
+    selectedIcon = icon;
+    removePreviousIcon();
+    iconPicker.classList.replace('bg-text', 'bg-accent');
+    iconPicker.firstElementChild.classList.replace(
+      'text-accent',
+      'text-secondaryColor',
+    );
+
+    callback(selectedIcon);
+  };
+
   iconPickers.forEach((iconPicker) => {
-    iconPicker.addEventListener('click', () => {
-      const icon = iconPicker.getAttribute('data-icon');
-      console.log(icon);
-      removePreviousIcon();
-      iconPicker.classList.replace('bg-text', 'bg-accent');
-      iconPicker.firstElementChild.classList.replace(
-        'text-accent',
-        'text-secondaryColor',
-      );
-    });
+    iconPicker.addEventListener('click', handleClick);
   });
 };
 
