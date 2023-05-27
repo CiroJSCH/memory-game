@@ -5,12 +5,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryBg: 'var(--primary-background)',
-        secondaryBg: 'var(--secondary-background)',
         primaryColor: 'var(--primary-color)',
         secondaryColor: 'var(--secondary-color)',
         accent: 'var(--accent)',
         text: 'var(--text)',
+        primaryBg: 'var(--primary-bg)',
+        secondaryBg: 'var(--secondary-bg)',
       },
       screens: {
         sm: '640px',

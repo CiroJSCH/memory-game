@@ -1,37 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Poppins:ital,wght@0,300;0,500;0,600;1,700&display=swap');
 
-.dark {
-  --primary-background: #050b1f;
-  --secondary-background: #081130;
-  --text: #fafafa;
-}
-
-.light {
-  --primary-background: #fcf3f9;
-  --secondary-background: #efe7ec;
-  --text: #000000;
+.green {
+  --primary-color: #55af7f;
+  --secondary-color: #f7eef3;
+  --accent: #336c4d;
+  --text: #ffffff;
+  --primary-bg: #000000;
+  --secondary-bg: #0d0d0d;
 }
 
 .gold {
-  --primary-color: #e0bb42;
-  --secondary-color: #e0e6fa;
-  --accent: #a2831a;
-}
-
-.green {
-  --primary-color: #08c44a;
-  --secodary-color: #0a150b;
-  --accent: #046225;
-}
-
-.pink {
-  --primary-color: #6a1b58;
-  --secondary-color: #f8e2f3;
-  --accent: #7e2068;
+  --primary-color: #ca9c12;
+  --secondary-color: #fffefa;
+  --accent: #e1ae14;
+  --text: #000000;
+  --primary-bg: #fdf9ec;
+  --secondary-bg: #f0ece0;
 }
 
 .blue {
-  --primary-color: #42c8cd;
-  --secondary-color: #ebf9fa;
-  --accent: #33bdc1;
+  --primary-color: #199ca3;
+  --secondary-color: #e0f9fa;
+  --accent: #16878d;
+  --text: #062628;
+  --primary-bg: #ffffff;
+  --secondary-bg: #f2f4f4;
+}
+
+.pink {
+  --primary-color: #f00fd6;
+  --secondary-color: #fccaf6;
+  --accent: #f127da;
+  --text: #0a0109;
+  --primary-bg: #fdd9f8;
+  --secondary-bg: #f1ceeb;
 }
