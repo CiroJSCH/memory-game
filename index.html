@@ -1,13 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="/dist/output.css" rel="stylesheet" />
+    <link href="/dist/styles/output.css" rel="stylesheet" />
+    <link href="/dist/styles/variables.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
-  <body>
-    <h1 class="text-blue-600">Caca</h1>
+  <body class="bg-primaryBg gold">
+    <main class="h-screen w-full flex items-center justify-center">
+      <section
+        class="bg-secondaryBg w-[90%] max-w-[450px] md:max-w-[500px] mx-auto h-auto rounded-10px flex flex-col p-3 md:p-5 gap-4 drop-shadow-xl"
+      >
+        <!-- Theme selector -->
+        <div>
+          <h3 class="text-primaryColor font-title text-[22px]">Temas</h3>
+          <ul
+            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
+          >
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(50%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-accent"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+                />
+              </svg>
+              <p class="text-accent">Oscuro</p>
+            </li>
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(50%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-accent"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                />
+              </svg>
+
+              <p class="text-accent">Claro</p>
+            </li>
+          </ul>
+        </div>
+        <!-- Color selector -->
+        <div>
+          <h3 class="text-primaryColor font-title text-[22px]">Colores</h3>
+          <ul
+            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
+          >
+            <li class="rounded-md bg-[#e0bb42] h-[50px] w-[calc(25%-5px)]"></li>
+            <li class="rounded-md bg-[#08c44a] h-[50px] w-[calc(25%-5px)]"></li>
+            <li class="rounded-md bg-[#6a1b58] h-[50px] w-[calc(25%-5px)]"></li>
+            <li class="rounded-md bg-[#42c8cd] h-[50px] w-[calc(25%-5px)]"></li>
+          </ul>
+        </div>
+        <!-- Icons selector -->
+        <div>
+          <h3 class="text-primaryColor font-title text-[22px]">Íconos</h3>
+          <ul
+            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
+          >
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <i class="fa-solid fa-code fa-2xl text-accent"></i>
+            </li>
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <i class="fa-solid fa-7 fa-2xl text-accent"></i>
+            </li>
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <i class="fa-solid fa-futbol fa-2xl text-accent"></i>
+            </li>
+          </ul>
+        </div>
+        <!-- Difficulty selector -->
+        <div>
+          <h3 class="text-primaryColor font-title text-[22px]">Dificultad</h3>
+          <ul
+            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
+          >
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <i class="fa-solid fa-face-smile-beam fa-2xl text-accent"></i>
+            </li>
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <i class="fa-solid fa-face-rolling-eyes fa-2xl text-accent"></i>
+            </li>
+            <li
+              class="rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+            >
+              <i class="fa-solid fa-face-tired fa-2xl text-accent"></i>
+            </li>
+          </ul>
+        </div>
+        <!-- Actions -->
+        <div class="flex flex-col gap-3 mt-4 justify-center font-title">
+          <button
+            class="bg-primaryColor uppercase font-bold text-[24px] rounded-md py-1"
+          >
+            Iniciar
+          </button>
+          <button
+            class="bg-secondaryColor uppercase font-bold text-[24px] rounded-md py-1"
+          >
+            Puntajes
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="/dist/script.js"></script>
   </body>
 </html>
