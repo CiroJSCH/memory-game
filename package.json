@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm-run-all --parallel tailwind typescript",
     "tailwind": "npx tailwindcss -i ./src/styles/input.css -o ./dist/styles/output.css --watch",
-    "typescript": "tsc"
+    "typescript": "tsc --watch"
   },
   "keywords": [],
   "author": "",
