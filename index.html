@@ -12,9 +12,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
-  <body class="bg-primaryBg green">
+  <body class="bg-primaryBg transition-colors duration-200 ease-in-out green">
     <main class="h-screen w-full flex items-center justify-center">
+      <!-- Main Menu -->
       <section
+        id="main-menu"
         class="bg-secondaryColor w-[90%] max-w-[450px] md:max-w-[500px] mx-auto h-auto rounded-10px flex flex-col p-3 md:p-5 gap-4 drop-shadow-xl"
       >
         <!-- Color selector -->
@@ -24,19 +26,19 @@
             class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
           >
             <li
-              class="color-picker cursor-pointer rounded-md bg-[#7cdea4] h-[50px] w-[calc(25%-5px)] border-4 border-text"
+              class="color-picker transition-[border] duration-200 cursor-pointer rounded-md bg-[#7cdea4] h-[50px] w-[calc(25%-5px)] border-4 border-text"
               data-color="green"
             ></li>
             <li
-              class="color-picker cursor-pointer rounded-md bg-[#ca9c12] h-[50px] w-[calc(25%-5px)]"
+              class="color-picker transition-[border] duration-200 cursor-pointer rounded-md bg-[#ca9c12] h-[50px] w-[calc(25%-5px)]"
               data-color="gold"
             ></li>
             <li
-              class="color-picker cursor-pointer rounded-md bg-[#199ca3] h-[50px] w-[calc(25%-5px)]"
+              class="color-picker transition-[border] duration-200 cursor-pointer rounded-md bg-[#199ca3] h-[50px] w-[calc(25%-5px)]"
               data-color="blue"
             ></li>
             <li
-              class="color-picker cursor-pointer rounded-md bg-[#c45f8b] h-[50px] w-[calc(25%-5px)]"
+              class="color-picker transition-[border] duration-200 cursor-pointer rounded-md bg-[#c45f8b] h-[50px] w-[calc(25%-5px)]"
               data-color="pink"
             ></li>
           </ul>
@@ -48,19 +50,19 @@
             class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
           >
             <li
-              class="icon-picker rounded-md h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center bg-accent"
+              class="icon-picker transition-colors duration-200 ease-in cursor-pointer rounded-md h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center bg-accent"
               data-icon="programming"
             >
               <i class="fa-solid fa-code fa-2xl text-secondaryColor"></i>
             </li>
             <li
-              class="icon-picker rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+              class="icon-picker transition-colors duration-200 ease-in cursor-pointer rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
               data-icon="numbers"
             >
               <i class="fa-solid fa-7 fa-2xl text-accent"></i>
             </li>
             <li
-              class="icon-picker rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+              class="icon-picker transition-colors duration-200 ease-in cursor-pointer rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
               data-icon="sports"
             >
               <i class="fa-solid fa-futbol fa-2xl text-accent"></i>
@@ -74,7 +76,7 @@
             class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
           >
             <li
-              class="difficulty-picker rounded-md h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center bg-accent"
+              class="difficulty-picker transition-colors duration-200 ease-in cursor-pointer rounded-md h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center bg-accent"
               data-difficulty="easy"
             >
               <i
@@ -82,13 +84,13 @@
               ></i>
             </li>
             <li
-              class="difficulty-picker rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+              class="difficulty-picker transition-colors duration-200 ease-in cursor-pointer rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
               data-difficulty="normal"
             >
               <i class="fa-solid fa-face-rolling-eyes fa-2xl text-accent"></i>
             </li>
             <li
-              class="difficulty-picker rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
+              class="difficulty-picker transition-colors duration-200 ease-in cursor-pointer rounded-md bg-text h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center"
               data-difficulty="hard"
             >
               <i class="fa-solid fa-face-tired fa-2xl text-accent"></i>
@@ -98,12 +100,13 @@
         <!-- Actions -->
         <div class="flex flex-col gap-3 mt-4 justify-center font-title">
           <button
-            class="bg-primaryColor text-text uppercase font-bold text-[24px] rounded-md py-1"
+            id="start-game-button"
+            class="bg-primaryColor border-2 border-transparent text-text uppercase font-bold text-[24px] rounded-md py-1 cursor-pointer hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent"
           >
             Iniciar
           </button>
           <button
-            class="bg-text uppercase font-bold text-[24px] rounded-md py-1 text-primaryColor"
+            class="bg-text uppercase border-2 border-transparent hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[24px] rounded-md py-1 text-primaryColor"
           >
             Puntajes
           </button>
