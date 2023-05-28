@@ -6,14 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link href="/dist/styles/output.css" rel="stylesheet" />
-    <link href="/dist/styles/variables.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
   <body class="bg-primaryBg transition-colors duration-200 ease-in-out green">
-    <main class="h-screen w-full flex items-center justify-center">
+    <main
+      class="min-h-screen relative w-full max-w-[1200px] mx-auto flex flex-col items-center justify-center"
+    >
+      <!-- Header -->
+      <section
+        id="header"
+        class="mb-[50px] w-[90%] max-w-[450px] md:max-w-[500px] flex justify-center items-center"
+      >
+        <!-- Logo -->
+        <div class="flex flex-col justify-center gap-2">
+          <div class="flex items-center justify-center">
+            <div
+              class="font-title font-bold text-[22px] sm:text-[24px] md:text-[30px] flex flex-col gap-2 justify-center items-center"
+            >
+              <div class="flex items-center gap-2">
+                <p class="p-2 text-text bg-accent rounded-md">M</p>
+                <p class="p-2 text-accent bg-text rounded-md -rotate-[20deg]">
+                  E
+                </p>
+                <p class="p-2 text-text bg-accent rounded-md rotate-[20deg]">
+                  M
+                </p>
+                <p class="p-2 text-accent bg-text rounded-md -rotate-[20deg]">
+                  O
+                </p>
+                <p class="p-2 text-text bg-accent rounded-md rotate-[20deg]">
+                  R
+                </p>
+                <p class="p-2 text-accent bg-text rounded-md -rotate-[20deg]">
+                  Y
+                </p>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <p
+                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md rotate-[20deg]"
+                >
+                  G
+                </p>
+                <p
+                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md -rotate-[20deg]"
+                >
+                  A
+                </p>
+                <p
+                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md rotate-[20deg]"
+                >
+                  M
+                </p>
+                <p
+                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md -rotate-[20deg]"
+                >
+                  E
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- In Game Menu -->
+        <div id="in-game-menu" class="hidden flex-col gap-2">
+          <button
+            class="hidden md:block bg-text uppercase border-2 border-transparent hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[20px] rounded-md px-2 text-primaryColor"
+          >
+            Restart
+          </button>
+          <button
+            id="restart-game-button"
+            class="hidden md:block bg-primaryColor border-2 border-transparent text-text uppercase font-bold text-[20px] rounded-md px-2 cursor-pointer hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent"
+          >
+            New Game
+          </button>
+        </div>
+      </section>
       <!-- Main Menu -->
       <section
         id="main-menu"
@@ -21,9 +92,9 @@
       >
         <!-- Color selector -->
         <div>
-          <h3 class="text-primaryColor font-title text-[22px]">Colores</h3>
+          <h3 class="text-primaryColor font-title text-[22px]">Colors</h3>
           <ul
-            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
+            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between drop-shadow-md"
           >
             <li
               class="color-picker transition-[border] duration-200 cursor-pointer rounded-md bg-[#7cdea4] h-[50px] w-[calc(25%-5px)] border-4 border-text"
@@ -45,9 +116,9 @@
         </div>
         <!-- Icons selector -->
         <div>
-          <h3 class="text-primaryColor font-title text-[22px]">Íconos</h3>
+          <h3 class="text-primaryColor font-title text-[22px]">Game Icons</h3>
           <ul
-            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
+            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between drop-shadow-md"
           >
             <li
               class="icon-picker transition-colors duration-200 ease-in cursor-pointer rounded-md h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center bg-accent"
@@ -71,9 +142,9 @@
         </div>
         <!-- Difficulty selector -->
         <div>
-          <h3 class="text-primaryColor font-title text-[22px]">Dificultad</h3>
+          <h3 class="text-primaryColor font-title text-[22px]">Difficulty</h3>
           <ul
-            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between"
+            class="mt-3 bg-primaryBg flex items-center p-3 rounded-md w-full justify-between drop-shadow-md"
           >
             <li
               class="difficulty-picker transition-colors duration-200 ease-in cursor-pointer rounded-md h-[50px] w-[calc(33%-5px)] flex items-center gap-2 font-bold justify-center bg-accent"
@@ -103,16 +174,60 @@
             id="start-game-button"
             class="bg-primaryColor border-2 border-transparent text-text uppercase font-bold text-[24px] rounded-md py-1 cursor-pointer hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent"
           >
-            Iniciar
+            Start
           </button>
           <button
             class="bg-text uppercase border-2 border-transparent hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[24px] rounded-md py-1 text-primaryColor"
           >
-            Puntajes
+            HighScores
           </button>
         </div>
       </section>
+      <!-- Game -->
+      <section
+        id="game"
+        class="hidden flex-col items-center justify-around h-auto w-[100%] max-w-[1200px]"
+      >
+        <!-- Cards Container -->
+        <section
+          id="cards-container"
+          class="grid grid-cols-4 grid-rows-4 items-center justify-center gap-3 md:gap-5 lg:gap-6 px-1"
+        ></section>
+
+        <!-- Timer and moves -->
+        <section
+          class="flex items-center justify-between gap-2 w-[100%] max-w-[320px] px-1 mt-[70px]"
+        >
+          <div
+            class="h-[80px] w-[140px] bg-primaryColor rounded-md border-2 border-primaryColor flex flex-col items-center justify-between p-2 drop-shadow-md"
+          >
+            <div class="flex items-center gap-2 font-title">
+              <i class="fa-solid fa-clock fa-lg text-secondaryColor"></i>
+              <p class="text-text uppercase font-bold">Tiempo</p>
+            </div>
+            <span id="time-count" class="text-[18px] font-bold">00:00:00</span>
+          </div>
+
+          <div
+            class="h-[80px] w-[140px] bg-secondaryColor rounded-md border-2 border-primaryColor flex flex-col items-center justify-between p-2 drop-shadow-md"
+          >
+            <div class="flex items-center gap-2 font-title">
+              <i class="fa-solid fa-up-down-left-right fa-lg text-accent"></i>
+              <p class="text-text uppercase font-bold">Moves</p>
+            </div>
+            <span id="moves-count" class="text-[18px] font-bold">0</span>
+          </div>
+        </section>
+      </section>
+      <!-- In Game Mobile Menu -->
+      <div
+        id="in-game-mobile-menu"
+        class="hidden md:hidden absolute bottom-3 right-3 bg-primaryColor border-2 border-text rounded-full h-[60px] w-[60px] items-center justify-center hover:bg-secondaryColor hover:border-accent drop-shadow-md"
+      >
+        <i class="fa-solid fa-pause fa-xl"></i>
+      </div>
     </main>
-    <script src="./dist/main.js" type="module"></script>
+    <audio id="correct-match" src="./src/audio/correct-match.wav"></audio>
+    <script src="./dist/scripts/main.js" type="module"></script>
   </body>
 </html>
