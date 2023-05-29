@@ -2,7 +2,7 @@ import updateIcon from './iconPicker.js';
 import updateDifficulty from './difficultyPicker.js';
 import updateColor from './colorPicker.js';
 import icons from '../data/icons.js';
-import { startTimer } from './timeCounter.js';
+import { startTimer, stopTimer, resetTimer } from './timeCounter.js';
 
 const movesCount = document.getElementById('moves-count');
 
@@ -42,6 +42,19 @@ const main = () => {
     let moves = 0;
     let foundPairs = 0;
     startTimer();
+
+    const newGameButton = document.getElementById('new-game-button');
+    newGameButton.addEventListener('click', () => {
+      header.classList.remove('md:justify-between');
+      inGameMobileMenu.classList.replace('flex', 'hidden');
+      game.classList.replace('flex', 'hidden');
+      inGameMenu.classList.replace('flex', 'hidden');
+      mainMenu.classList.replace('hidden', 'flex');
+
+      cardsContainer.innerHTML = '';
+      stopTimer();
+      resetTimer();
+    });
 
     if (selectedDifficulty === 'normal') {
       cardsContainer.classList.add('sm:grid-cols-5');
@@ -150,6 +163,13 @@ const main = () => {
     const cardsArray = document.querySelectorAll('[id^="card-"]');
     cardsArray.forEach((card) => {
       card.addEventListener('click', () => flipCard(card));
+      const back = card.querySelector('.back');
+      back.classList.replace('opacity-100', 'opacity-0');
+      cardsContainer.classList.add('pointer-events-none');
+      setTimeout(() => {
+        back.classList.replace('opacity-0', 'opacity-100');
+        cardsContainer.classList.remove('pointer-events-none');
+      }, 3500);
     });
   });
 };
