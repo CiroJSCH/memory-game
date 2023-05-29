@@ -47,8 +47,14 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
   let moves = 0;
   let foundPairs = 0;
 
-  const newGameButton = document.getElementById('new-game-button');
-  newGameButton.addEventListener('click', () => {
+  const newGameButton = document.getElementById('new-game-menu');
+  newGameButton.addEventListener('click', () => newGame());
+
+  const restartGameButton = document.getElementById('restart-game-menu');
+  restartGameButton.addEventListener('click', () => restartGame());
+
+  const newGame = () => {
+    movesCount.innerHTML = '0';
     header.classList.remove('md:justify-between');
     inGameMobileMenu.classList.replace('flex', 'hidden');
     game.classList.replace('flex', 'hidden');
@@ -58,7 +64,7 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
     cardsContainer.innerHTML = '';
     stopTimer();
     resetTimer();
-  });
+  };
 
   if (selectedDifficulty === 'normal') {
     cardsContainer.classList.add('sm:grid-cols-5');
@@ -137,7 +143,29 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
       foundPairs += 1;
 
       if (foundPairs === cards / 2) {
-        console.log('Juego terminado');
+        const elapsedTime = document.getElementById('time-count').innerHTML;
+        stopTimer();
+        const gameFinishedModal = document.getElementById(
+          'game-finished-modal',
+        );
+        gameFinishedModal.classList.replace('hidden', 'flex');
+        const totalMoves = document.getElementById('total-moves');
+        const totalTime = document.getElementById('total-time');
+
+        const newGameButton = document.getElementById('new-game-modal');
+        newGameButton.addEventListener('click', () => {
+          gameFinishedModal.classList.replace('flex', 'hidden');
+          newGame();
+        });
+
+        const restartGameButton = document.getElementById('restart-game-modal');
+        restartGameButton.addEventListener('click', () => {
+          gameFinishedModal.classList.replace('flex', 'hidden');
+          restartGame();
+        });
+
+        totalMoves.innerHTML = moves.toString();
+        totalTime.innerHTML = elapsedTime;
       }
     } else {
       setTimeout(() => {
@@ -179,13 +207,12 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
   });
 };
 
-const restartGameButton = document.getElementById('restart-game-button');
-restartGameButton.addEventListener('click', () => {
+const restartGame = () => {
   stopTimer();
   resetTimer();
   cardsContainer.innerHTML = '';
   movesCount.innerHTML = '0';
   startGame(selectedIcon, selectedDifficulty);
-});
+};
 
 main();
