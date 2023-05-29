@@ -3,12 +3,12 @@ let interval: NodeJS.Timeout;
 
 const timeElement: HTMLElement | null = document.getElementById('time-count');
 
-export const startTimer = (): void => {
+export const startTimer = () => {
   initialTime = Date.now();
   interval = setInterval(updateTimer, 1000);
 };
 
-export const stopTimer = (): void => {
+export const stopTimer = () => {
   clearInterval(interval);
 };
 

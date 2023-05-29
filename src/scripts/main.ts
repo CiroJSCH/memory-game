@@ -173,6 +173,7 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
     setTimeout(() => {
       back.classList.replace('opacity-0', 'opacity-100');
       cardsContainer.classList.remove('pointer-events-none');
+      stopTimer();
       startTimer();
     }, 3500);
   });
@@ -180,10 +181,10 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
 
 const restartGameButton = document.getElementById('restart-game-button');
 restartGameButton.addEventListener('click', () => {
-  cardsContainer.innerHTML = '';
-  movesCount.innerHTML = '0';
   stopTimer();
   resetTimer();
+  cardsContainer.innerHTML = '';
+  movesCount.innerHTML = '0';
   startGame(selectedIcon, selectedDifficulty);
 });
 
