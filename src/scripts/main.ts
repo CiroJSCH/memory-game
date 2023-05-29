@@ -4,76 +4,80 @@ import updateColor from './colorPicker.js';
 import icons from '../data/icons.js';
 import { startTimer, stopTimer, resetTimer } from './timeCounter.js';
 
+const cardsContainer = document.getElementById('cards-container');
 const movesCount = document.getElementById('moves-count');
 
 type Icon = 'programming' | 'animals' | 'sports';
 
+let selectedIcon: Icon = 'programming';
+let selectedDifficulty = 'easy';
+updateIcon((icon: Icon) => {
+  selectedIcon = icon;
+});
+
+updateDifficulty((difficulty) => {
+  selectedDifficulty = difficulty;
+});
+
+updateColor();
+
 const main = () => {
-  let selectedIcon: Icon = 'programming';
-  let selectedDifficulty = 'easy';
-  updateIcon((icon: Icon) => {
-    selectedIcon = icon;
-  });
-
-  updateDifficulty((difficulty) => {
-    selectedDifficulty = difficulty;
-  });
-
-  updateColor();
-
   const startGameButton = document.getElementById('start-game-button');
 
-  startGameButton.addEventListener('click', () => {
-    const mainMenu = document.getElementById('main-menu');
-    const inGameMenu = document.getElementById('in-game-menu');
-    const inGameMobileMenu = document.getElementById('in-game-mobile-menu');
-    const header = document.getElementById('header');
-    const game = document.getElementById('game');
-    const selectedIcons = icons[selectedIcon];
+  startGameButton.addEventListener('click', () =>
+    startGame(selectedIcon, selectedDifficulty),
+  );
+};
 
-    inGameMenu.classList.replace('hidden', 'flex');
-    header.classList.add('md:justify-between');
-    inGameMobileMenu.classList.replace('hidden', 'flex');
-    mainMenu.classList.replace('flex', 'hidden');
-    game.classList.replace('hidden', 'flex');
+const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
+  const mainMenu = document.getElementById('main-menu');
+  const inGameMenu = document.getElementById('in-game-menu');
+  const inGameMobileMenu = document.getElementById('in-game-mobile-menu');
+  const header = document.getElementById('header');
+  const game = document.getElementById('game');
+  const selectedIcons = icons[selectedIcon];
 
-    const cardsContainer = document.getElementById('cards-container');
-    let cards = 16;
-    let moves = 0;
-    let foundPairs = 0;
-    startTimer();
+  inGameMenu.classList.replace('hidden', 'flex');
+  header.classList.add('md:justify-between');
+  inGameMobileMenu.classList.replace('hidden', 'flex');
+  mainMenu.classList.replace('flex', 'hidden');
+  game.classList.replace('hidden', 'flex');
 
-    const newGameButton = document.getElementById('new-game-button');
-    newGameButton.addEventListener('click', () => {
-      header.classList.remove('md:justify-between');
-      inGameMobileMenu.classList.replace('flex', 'hidden');
-      game.classList.replace('flex', 'hidden');
-      inGameMenu.classList.replace('flex', 'hidden');
-      mainMenu.classList.replace('hidden', 'flex');
+  let cards = 16;
+  let moves = 0;
+  let foundPairs = 0;
 
-      cardsContainer.innerHTML = '';
-      stopTimer();
-      resetTimer();
-    });
+  const newGameButton = document.getElementById('new-game-button');
+  newGameButton.addEventListener('click', () => {
+    header.classList.remove('md:justify-between');
+    inGameMobileMenu.classList.replace('flex', 'hidden');
+    game.classList.replace('flex', 'hidden');
+    inGameMenu.classList.replace('flex', 'hidden');
+    mainMenu.classList.replace('hidden', 'flex');
 
-    if (selectedDifficulty === 'normal') {
-      cardsContainer.classList.add('sm:grid-cols-5');
-      cards = 20;
-    } else if (selectedDifficulty === 'hard') {
-      cardsContainer.classList.add('sm:grid-cols-6');
-      cards = 24;
-    }
+    cardsContainer.innerHTML = '';
+    stopTimer();
+    resetTimer();
+  });
 
-    const randomIcons = [
-      ...selectedIcons.slice(0, cards / 2),
-      ...selectedIcons.slice(0, cards / 2),
-    ].sort(() => Math.random() - 0.5);
-    const sortedCards = randomIcons;
+  if (selectedDifficulty === 'normal') {
+    cardsContainer.classList.add('sm:grid-cols-5');
+    cards = 20;
+  } else if (selectedDifficulty === 'hard') {
+    cardsContainer.classList.add('sm:grid-cols-6');
+    cards = 24;
+  }
 
-    const tempFragment = document.createDocumentFragment();
+  const randomIcons = [
+    ...selectedIcons.slice(0, cards / 2),
+    ...selectedIcons.slice(0, cards / 2),
+  ].sort(() => Math.random() - 0.5);
+  const sortedCards = randomIcons;
 
-    for (let i = 0; i < cards; i++) {
-      const card = `
+  const tempFragment = document.createDocumentFragment();
+
+  for (let i = 0; i < cards; i++) {
+    const card = `
         <div id="card-${i}" class="rounded-full cursor-pointer">
             <div
               class="relative shadow-xl transition-all duration-500  bg-secondaryColor text-text h-[70px] sm:h-[80px] md:h-[100px] lg:h-[110px] w-[70px] sm:w-[80px] md:w-[100px] lg:w-[110px] col-span-1 row-span-1 rounded-full"
@@ -90,88 +94,97 @@ const main = () => {
             </div>
           </div> 
       `;
-      tempFragment.appendChild(
-        document.createRange().createContextualFragment(card),
+    tempFragment.appendChild(
+      document.createRange().createContextualFragment(card),
+    );
+  }
+  cardsContainer.appendChild(tempFragment);
+
+  const selectedCards: Element[] = [];
+
+  const checkIfMatch = () => {
+    const frontCard1 = selectedCards[0].querySelector('.front');
+    const frontCard2 = selectedCards[1].querySelector('.front');
+
+    const backCard1 = selectedCards[0].querySelector('.back');
+    const backCard2 = selectedCards[1].querySelector('.back');
+
+    if (frontCard1.innerHTML === frontCard2.innerHTML) {
+      const correctMatchSound = document.getElementById(
+        'correct-match',
+      ) as HTMLAudioElement;
+      correctMatchSound.play();
+
+      selectedCards[0].classList.replace('cursor-pointer', 'cursor-default');
+      selectedCards[1].classList.replace('cursor-pointer', 'cursor-default');
+
+      selectedCards[0].firstElementChild.classList.replace(
+        'bg-secondaryColor',
+        'bg-primaryColor',
       );
-    }
-    cardsContainer.appendChild(tempFragment);
+      selectedCards[0].firstElementChild.classList.add(
+        'border-2',
+        'border-accent',
+      );
+      selectedCards[1].firstElementChild.classList.replace(
+        'bg-secondaryColor',
+        'bg-primaryColor',
+      );
+      selectedCards[1].firstElementChild.classList.add(
+        'border-2',
+        'border-accent',
+      );
+      foundPairs += 1;
 
-    const selectedCards: Element[] = [];
-
-    const checkIfMatch = () => {
-      const frontCard1 = selectedCards[0].querySelector('.front');
-      const frontCard2 = selectedCards[1].querySelector('.front');
-
-      const backCard1 = selectedCards[0].querySelector('.back');
-      const backCard2 = selectedCards[1].querySelector('.back');
-
-      if (frontCard1.innerHTML === frontCard2.innerHTML) {
-        const correctMatchSound = document.getElementById(
-          'correct-match',
-        ) as HTMLAudioElement;
-        correctMatchSound.play();
-
-        selectedCards[0].classList.replace('cursor-pointer', 'cursor-default');
-        selectedCards[1].classList.replace('cursor-pointer', 'cursor-default');
-
-        selectedCards[0].firstElementChild.classList.replace(
-          'bg-secondaryColor',
-          'bg-primaryColor',
-        );
-        selectedCards[0].firstElementChild.classList.add(
-          'border-2',
-          'border-accent',
-        );
-        selectedCards[1].firstElementChild.classList.replace(
-          'bg-secondaryColor',
-          'bg-primaryColor',
-        );
-        selectedCards[1].firstElementChild.classList.add(
-          'border-2',
-          'border-accent',
-        );
-        foundPairs += 1;
-
-        if (foundPairs === cards / 2) {
-          console.log('Juego terminado');
-        }
-      } else {
-        setTimeout(() => {
-          backCard1.classList.replace('opacity-0', 'opacity-100');
-          backCard2.classList.replace('opacity-0', 'opacity-100');
-        }, 1000);
+      if (foundPairs === cards / 2) {
+        console.log('Juego terminado');
       }
-      selectedCards.length = 0;
-    };
-
-    const flipCard = (card: any) => {
-      const back = card.querySelector('.back');
-      back.classList.replace('opacity-100', 'opacity-0');
-      if (
-        selectedCards[0] !== card &&
-        !card.firstElementChild.classList.contains('bg-primaryColor')
-      ) {
-        selectedCards.push(card);
-        moves += 1;
-        movesCount.innerHTML = moves.toString();
-      }
-      if (selectedCards.length === 2) {
-        checkIfMatch();
-      }
-    };
-
-    const cardsArray = document.querySelectorAll('[id^="card-"]');
-    cardsArray.forEach((card) => {
-      card.addEventListener('click', () => flipCard(card));
-      const back = card.querySelector('.back');
-      back.classList.replace('opacity-100', 'opacity-0');
-      cardsContainer.classList.add('pointer-events-none');
+    } else {
       setTimeout(() => {
-        back.classList.replace('opacity-0', 'opacity-100');
-        cardsContainer.classList.remove('pointer-events-none');
-      }, 3500);
-    });
+        backCard1.classList.replace('opacity-0', 'opacity-100');
+        backCard2.classList.replace('opacity-0', 'opacity-100');
+      }, 1000);
+    }
+    selectedCards.length = 0;
+  };
+
+  const flipCard = (card: Element) => {
+    const back = card.querySelector('.back');
+    back.classList.replace('opacity-100', 'opacity-0');
+    if (
+      selectedCards[0] !== card &&
+      !card.firstElementChild.classList.contains('bg-primaryColor')
+    ) {
+      selectedCards.push(card);
+      moves += 1;
+      movesCount.innerHTML = moves.toString();
+    }
+    if (selectedCards.length === 2) {
+      checkIfMatch();
+    }
+  };
+
+  const cardsArray = document.querySelectorAll('[id^="card-"]');
+  cardsArray.forEach((card) => {
+    card.addEventListener('click', () => flipCard(card));
+    const back = card.querySelector('.back');
+    back.classList.replace('opacity-100', 'opacity-0');
+    cardsContainer.classList.add('pointer-events-none');
+    setTimeout(() => {
+      back.classList.replace('opacity-0', 'opacity-100');
+      cardsContainer.classList.remove('pointer-events-none');
+      startTimer();
+    }, 3500);
   });
 };
+
+const restartGameButton = document.getElementById('restart-game-button');
+restartGameButton.addEventListener('click', () => {
+  cardsContainer.innerHTML = '';
+  movesCount.innerHTML = '0';
+  stopTimer();
+  resetTimer();
+  startGame(selectedIcon, selectedDifficulty);
+});
 
 main();
