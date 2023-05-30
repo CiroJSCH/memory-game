@@ -146,7 +146,7 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
 
       setTimeout(() => {
         cardsContainer.classList.remove('pointer-events-none');
-      }, 1000);
+      }, 500);
     } else {
       setTimeout(() => {
         backCard1.classList.replace('opacity-0', 'opacity-100');
