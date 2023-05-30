@@ -1,6 +1,6 @@
 import { resetTimer, stopTimer } from './timeCounter.js';
 import { cardsContainer, movesCount } from './globals.js';
-import startGame from './startGame.js';
+import startGame from './menu/startGame.js';
 
 type Icon = 'programming' | 'animals' | 'sports';
 

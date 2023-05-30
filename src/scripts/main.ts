@@ -1,8 +1,8 @@
 import { inGameMobileMenu } from './globals.js';
-import updateIcon from './iconPicker.js';
-import updateDifficulty from './difficultyPicker.js';
-import updateColor from './colorPicker.js';
-import startGame from './startGame.js';
+import updateIcon from './menu/iconPicker.js';
+import updateDifficulty from './menu/difficultyPicker.js';
+import updateColor from './menu/colorPicker.js';
+import startGame from './menu/startGame.js';
 import { startTimer, stopTimer } from './timeCounter.js';
 import restartGame from './restartGame.js';
 import newGame from './newGame.js';

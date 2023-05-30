@@ -8,11 +8,11 @@ import {
   movesCount,
   newGameButton,
   restartGameButton,
-} from './globals.js';
-import { startTimer, stopTimer } from './timeCounter.js';
-import newGame from './newGame.js';
-import icons from '../data/icons.js';
-import restartGame from './restartGame.js';
+} from '../globals.js';
+import { startTimer, stopTimer } from '../timeCounter.js';
+import newGame from '../newGame.js';
+import icons from '../../data/icons.js';
+import restartGame from '../restartGame.js';
 
 type Icon = 'programming' | 'animals' | 'sports';
 
