@@ -32,6 +32,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "devmoji": "^2.3.0"
+    "devmoji": "^2.3.0",
+    "firebase": "^9.22.1"
   }
 }
