@@ -1,11 +1,11 @@
+import { inGameMobileMenu } from './globals.js';
 import updateIcon from './iconPicker.js';
 import updateDifficulty from './difficultyPicker.js';
 import updateColor from './colorPicker.js';
-import icons from '../data/icons.js';
-import { startTimer, stopTimer, resetTimer } from './timeCounter.js';
-
-const cardsContainer = document.getElementById('cards-container');
-const movesCount = document.getElementById('moves-count');
+import startGame from './startGame.js';
+import { startTimer, stopTimer } from './timeCounter.js';
+import restartGame from './restartGame.js';
+import newGame from './newGame.js';
 
 type Icon = 'programming' | 'animals' | 'sports';
 
@@ -27,192 +27,32 @@ const main = () => {
   startGameButton.addEventListener('click', () =>
     startGame(selectedIcon, selectedDifficulty),
   );
-};
 
-const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
-  const mainMenu = document.getElementById('main-menu');
-  const inGameMenu = document.getElementById('in-game-menu');
-  const inGameMobileMenu = document.getElementById('in-game-mobile-menu');
-  const header = document.getElementById('header');
-  const game = document.getElementById('game');
-  const selectedIcons = icons[selectedIcon];
+  inGameMobileMenu.addEventListener('click', () => {
+    const gamePausedModal = document.getElementById('game-paused-modal');
+    gamePausedModal.classList.replace('hidden', 'flex');
 
-  inGameMenu.classList.replace('hidden', 'flex');
-  header.classList.add('md:justify-between');
-  inGameMobileMenu.classList.replace('hidden', 'flex');
-  mainMenu.classList.replace('flex', 'hidden');
-  game.classList.replace('hidden', 'flex');
-
-  let cards = 16;
-  let moves = 0;
-  let foundPairs = 0;
-
-  const newGameButton = document.getElementById('new-game-menu');
-  newGameButton.addEventListener('click', () => newGame());
-
-  const restartGameButton = document.getElementById('restart-game-menu');
-  restartGameButton.addEventListener('click', () => restartGame());
-
-  const newGame = () => {
-    movesCount.innerHTML = '0';
-    header.classList.remove('md:justify-between');
-    inGameMobileMenu.classList.replace('flex', 'hidden');
-    game.classList.replace('flex', 'hidden');
-    inGameMenu.classList.replace('flex', 'hidden');
-    mainMenu.classList.replace('hidden', 'flex');
-
-    cardsContainer.innerHTML = '';
+    const time = document.getElementById('time-count').innerHTML;
     stopTimer();
-    resetTimer();
-  };
+    const restartGameModal = document.getElementById('restart-game-modal');
+    const newGameModal = document.getElementById('new-game-modal');
+    const resumeGameModal = document.getElementById('resume-game-modal');
 
-  if (selectedDifficulty === 'normal') {
-    cardsContainer.classList.add('sm:grid-cols-5');
-    cards = 20;
-  } else if (selectedDifficulty === 'hard') {
-    cardsContainer.classList.add('sm:grid-cols-6');
-    cards = 24;
-  }
+    restartGameModal.addEventListener('click', () => {
+      gamePausedModal.classList.replace('flex', 'hidden');
+      restartGame(selectedIcon, selectedDifficulty);
+    });
 
-  const randomIcons = [
-    ...selectedIcons.slice(0, cards / 2),
-    ...selectedIcons.slice(0, cards / 2),
-  ].sort(() => Math.random() - 0.5);
-  const sortedCards = randomIcons;
+    newGameModal.addEventListener('click', () => {
+      gamePausedModal.classList.replace('flex', 'hidden');
+      newGame();
+    });
 
-  const tempFragment = document.createDocumentFragment();
-
-  for (let i = 0; i < cards; i++) {
-    const card = `
-        <div id="card-${i}" class="rounded-full cursor-pointer">
-            <div
-              class="relative shadow-xl transition-all duration-500  bg-secondaryColor text-text h-[70px] sm:h-[80px] md:h-[100px] lg:h-[110px] w-[70px] sm:w-[80px] md:w-[100px] lg:w-[110px] col-span-1 row-span-1 rounded-full"
-            >
-              <div class="front absolute inset-0 flex items-center justify-center">
-                ${sortedCards[i]}
-              </div>
-
-              <div
-                class="back absolute transition-[opacity] duration-200 opacity-100 inset-0 h-full w-full rounded-full bg-text text-center flex items-center justify-center border-2 border-primaryColor"
-              >
-                <i class="fa-regular fa-circle-question fa-2xl text-accent"></i>
-              </div>
-            </div>
-          </div> 
-      `;
-    tempFragment.appendChild(
-      document.createRange().createContextualFragment(card),
-    );
-  }
-  cardsContainer.appendChild(tempFragment);
-
-  const selectedCards: Element[] = [];
-
-  const checkIfMatch = () => {
-    const frontCard1 = selectedCards[0].querySelector('.front');
-    const frontCard2 = selectedCards[1].querySelector('.front');
-
-    const backCard1 = selectedCards[0].querySelector('.back');
-    const backCard2 = selectedCards[1].querySelector('.back');
-
-    if (frontCard1.innerHTML === frontCard2.innerHTML) {
-      const correctMatchSound = document.getElementById(
-        'correct-match',
-      ) as HTMLAudioElement;
-      correctMatchSound.play();
-
-      selectedCards[0].classList.replace('cursor-pointer', 'cursor-default');
-      selectedCards[1].classList.replace('cursor-pointer', 'cursor-default');
-
-      selectedCards[0].firstElementChild.classList.replace(
-        'bg-secondaryColor',
-        'bg-primaryColor',
-      );
-      selectedCards[0].firstElementChild.classList.add(
-        'border-2',
-        'border-accent',
-      );
-      selectedCards[1].firstElementChild.classList.replace(
-        'bg-secondaryColor',
-        'bg-primaryColor',
-      );
-      selectedCards[1].firstElementChild.classList.add(
-        'border-2',
-        'border-accent',
-      );
-      foundPairs += 1;
-
-      if (foundPairs === cards / 2) {
-        const elapsedTime = document.getElementById('time-count').innerHTML;
-        stopTimer();
-        const gameFinishedModal = document.getElementById(
-          'game-finished-modal',
-        );
-        gameFinishedModal.classList.replace('hidden', 'flex');
-        const totalMoves = document.getElementById('total-moves');
-        const totalTime = document.getElementById('total-time');
-
-        const newGameButton = document.getElementById('new-game-modal');
-        newGameButton.addEventListener('click', () => {
-          gameFinishedModal.classList.replace('flex', 'hidden');
-          newGame();
-        });
-
-        const restartGameButton = document.getElementById('restart-game-modal');
-        restartGameButton.addEventListener('click', () => {
-          gameFinishedModal.classList.replace('flex', 'hidden');
-          restartGame();
-        });
-
-        totalMoves.innerHTML = moves.toString();
-        totalTime.innerHTML = elapsedTime;
-      }
-    } else {
-      setTimeout(() => {
-        backCard1.classList.replace('opacity-0', 'opacity-100');
-        backCard2.classList.replace('opacity-0', 'opacity-100');
-      }, 1000);
-    }
-    selectedCards.length = 0;
-  };
-
-  const flipCard = (card: Element) => {
-    const back = card.querySelector('.back');
-    back.classList.replace('opacity-100', 'opacity-0');
-    if (
-      selectedCards[0] !== card &&
-      !card.firstElementChild.classList.contains('bg-primaryColor')
-    ) {
-      selectedCards.push(card);
-      moves += 1;
-      movesCount.innerHTML = moves.toString();
-    }
-    if (selectedCards.length === 2) {
-      checkIfMatch();
-    }
-  };
-
-  const cardsArray = document.querySelectorAll('[id^="card-"]');
-  cardsArray.forEach((card) => {
-    card.addEventListener('click', () => flipCard(card));
-    const back = card.querySelector('.back');
-    back.classList.replace('opacity-100', 'opacity-0');
-    cardsContainer.classList.add('pointer-events-none');
-    setTimeout(() => {
-      back.classList.replace('opacity-0', 'opacity-100');
-      cardsContainer.classList.remove('pointer-events-none');
-      stopTimer();
-      startTimer();
-    }, 3500);
+    resumeGameModal.addEventListener('click', () => {
+      gamePausedModal.classList.replace('flex', 'hidden');
+      startTimer(time);
+    });
   });
-};
-
-const restartGame = () => {
-  stopTimer();
-  resetTimer();
-  cardsContainer.innerHTML = '';
-  movesCount.innerHTML = '0';
-  startGame(selectedIcon, selectedDifficulty);
 };
 
 main();
