@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Memory Game</title>
+    <link rel="icon" type="image/x-icon" href="public/icon.ico" />
     <link href="/dist/styles/output.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -226,6 +227,43 @@
         class="hidden md:hidden absolute bottom-3 right-3 bg-primaryColor border-2 border-text rounded-full h-[60px] w-[60px] items-center justify-center hover:bg-secondaryColor hover:border-accent drop-shadow-md"
       >
         <i class="fa-solid fa-pause fa-xl"></i>
+      </div>
+      <!-- Game paused modal -->
+      <div
+        id="game-paused-modal"
+        class="hidden absolute top-0 right-0 h-screen w-screen bg-black/60 items-center justify-center"
+      >
+        <section
+          class="bg-secondaryColor rounded-md w-[90%] h-auto max-w-[450px] p-5"
+        >
+          <div class="text-center uppercase border-b pb-3">
+            <h3
+              class="mb-3 font-title text-[22px] md:text-[26px] lg:text-[28px] text-accent font-semibold"
+            >
+              Game paused
+            </h3>
+          </div>
+          <div class="py-[25px] flex flex-col gap-3">
+            <button
+              id="restart-game-modal"
+              class="bg-text uppercase border-2 border-transparent hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[20px] rounded-md p-2 text-primaryColor"
+            >
+              Restart
+            </button>
+            <button
+              id="new-game-modal"
+              class="new-game-button bg-primaryColor border-2 border-transparent text-text uppercase font-bold text-[20px] rounded-md p-2 cursor-pointer hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent"
+            >
+              New Game
+            </button>
+            <button
+              id="resume-game-modal"
+              class="bg-transparent text-text uppercase border-2 border-secondaryBg hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[20px] rounded-md p-2"
+            >
+              Resume Game
+            </button>
+          </div>
+        </section>
       </div>
       <!-- Game finished modal -->
       <div
