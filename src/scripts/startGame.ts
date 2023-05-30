@@ -126,13 +126,15 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
         const totalMoves = document.getElementById('total-moves');
         const totalTime = document.getElementById('total-time');
 
-        const newGameButton = document.getElementById('new-game-modal');
+        const newGameButton = document.getElementById('new-finish-modal');
         newGameButton.addEventListener('click', () => {
           gameFinishedModal.classList.replace('flex', 'hidden');
           newGame();
         });
 
-        const restartGameButton = document.getElementById('restart-game-modal');
+        const restartGameButton = document.getElementById(
+          'restart-finish-modal',
+        );
         restartGameButton.addEventListener('click', () => {
           gameFinishedModal.classList.replace('flex', 'hidden');
           restartGame(selectedIcon, selectedDifficulty);
