@@ -180,12 +180,14 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
     back.classList.replace('opacity-100', 'opacity-0');
     cardsContainer.classList.add('pointer-events-none');
     inGameMobileMenu.classList.add('pointer-events-none');
+    restartGameButton.classList.add('pointer-events-none');
     setTimeout(() => {
       back.classList.replace('opacity-0', 'opacity-100');
       cardsContainer.classList.remove('pointer-events-none');
       stopTimer();
       startTimer();
       inGameMobileMenu.classList.remove('pointer-events-none');
+      restartGameButton.classList.remove('pointer-events-none');
     }, 3500);
   });
 };
