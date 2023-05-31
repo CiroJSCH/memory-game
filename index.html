@@ -14,12 +14,12 @@
   </head>
   <body class="bg-primaryBg transition-colors duration-200 ease-in-out">
     <main
-      class="min-h-screen relative w-full mx-auto flex flex-col items-center justify-center"
+      class="min-h-screen relative w-full mx-auto flex flex-col items-center justify-center py-[20px]"
     >
       <!-- Header -->
       <section
         id="header"
-        class="mb-[50px] w-[90%] max-w-[450px] md:max-w-[500px] flex justify-center items-center"
+        class="mb-[50px] px-2 xs:px-3 md:px-0 w-full max-w-[450px] md:max-w-[500px] lg:max-w-[600px] flex justify-center items-center"
       >
         <!-- Logo -->
         <div class="flex flex-col justify-center gap-2">
@@ -28,42 +28,52 @@
               class="font-title font-bold text-[22px] sm:text-[24px] md:text-[30px] flex flex-col gap-2 justify-center items-center"
             >
               <div class="flex items-center gap-2">
-                <p class="p-2 text-text bg-accent rounded-md">M</p>
-                <p class="p-2 text-accent bg-text rounded-md -rotate-[20deg]">
+                <p class="p-1 xs:p-2 text-text bg-accent rounded-md">M</p>
+                <p
+                  class="p-1 xs:p-2 text-accent bg-text rounded-md -rotate-[20deg]"
+                >
                   E
                 </p>
-                <p class="p-2 text-text bg-accent rounded-md rotate-[20deg]">
+                <p
+                  class="p-1 xs:p-2 text-text bg-accent rounded-md rotate-[20deg]"
+                >
                   M
                 </p>
-                <p class="p-2 text-accent bg-text rounded-md -rotate-[20deg]">
+                <p
+                  class="p-1 xs:p-2 text-accent bg-text rounded-md -rotate-[20deg]"
+                >
                   O
                 </p>
-                <p class="p-2 text-text bg-accent rounded-md rotate-[20deg]">
+                <p
+                  class="p-1 xs:p-2 text-text bg-accent rounded-md rotate-[20deg]"
+                >
                   R
                 </p>
-                <p class="p-2 text-accent bg-text rounded-md -rotate-[20deg]">
+                <p
+                  class="p-1 xs:p-2 text-accent bg-text rounded-md -rotate-[20deg]"
+                >
                   Y
                 </p>
               </div>
 
               <div class="flex items-center gap-2">
                 <p
-                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md rotate-[20deg]"
+                  class="p-1 xs:p-2 text-accent bg-secondaryColor border border-accent rounded-md rotate-[20deg]"
                 >
                   G
                 </p>
                 <p
-                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md -rotate-[20deg]"
+                  class="p-1 xs:p-2 text-accent bg-secondaryColor border border-accent rounded-md -rotate-[20deg]"
                 >
                   A
                 </p>
                 <p
-                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md rotate-[20deg]"
+                  class="p-1 xs:p-2 text-accent bg-secondaryColor border border-accent rounded-md rotate-[20deg]"
                 >
                   M
                 </p>
                 <p
-                  class="p-2 text-accent bg-secondaryColor border border-accent rounded-md -rotate-[20deg]"
+                  class="p-1 xs:p-2 text-accent bg-secondaryColor border border-accent rounded-md -rotate-[20deg]"
                 >
                   E
                 </p>
@@ -75,16 +85,23 @@
         <div id="in-game-menu" class="hidden flex-col gap-2">
           <button
             id="restart-game-menu"
-            class="hidden md:block bg-text uppercase border-2 border-transparent hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[20px] rounded-md px-2 text-primaryColor"
+            class="hidden md:block bg-text uppercase border-2 border-transparent hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[24px] rounded-md px-3 py-1 text-primaryColor"
           >
             Restart
           </button>
           <button
             id="new-game-menu"
-            class="hidden md:block bg-primaryColor border-2 border-transparent text-text uppercase font-bold text-[20px] rounded-md px-2 cursor-pointer hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent"
+            class="hidden md:block bg-primaryColor border-2 border-transparent text-text uppercase font-bold text-[24px] rounded-md px-3 py-1 cursor-pointer hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent"
           >
             New Game
           </button>
+        </div>
+        <!-- In Game Mobile Menu -->
+        <div
+          id="in-game-mobile-menu"
+          class="hidden md:hidden bg-primaryColor border-2 border-text rounded-full h-[55px] xs:h-[60px] w-[55px] xs:w-[60px] items-center justify-center hover:bg-secondaryColor hover:border-accent drop-shadow-md"
+        >
+          <i class="fa-solid fa-pause fa-xl"></i>
         </div>
       </section>
       <!-- Main Menu -->
@@ -269,41 +286,46 @@
         <!-- Cards Container -->
         <section
           id="cards-container"
-          class="grid grid-cols-4 grid-rows-4 items-center justify-center gap-3 md:gap-5 lg:gap-6 px-1"
+          class="grid grid-cols-4 grid-rows-4 items-center justify-center gap-1 xs:gap-2 md:gap-5 lg:gap-6 xs:px-1"
         ></section>
 
         <!-- Timer and moves -->
         <section
-          class="flex items-center justify-between gap-2 w-[100%] max-w-[320px] px-1 mt-[70px]"
+          class="flex items-center justify-between gap-2 w-[100%] max-w-[400px] md:max-w-[500px] lg:max-w-[600px] px-1 xs:px-2 sm:px-0 mt-[70px]"
         >
           <div
-            class="h-[80px] w-[140px] bg-primaryColor rounded-md border-2 border-primaryColor flex flex-col items-center justify-between p-2 drop-shadow-md"
+            class="h-[80px] w-full max-w-[140px] xs:max-w-[170px] sm:max-w-[185px] md:max-w-[200px] bg-primaryColor rounded-md border-2 border-primaryColor flex flex-col items-center justify-between p-2 drop-shadow-md"
           >
             <div class="flex items-center gap-2 font-title">
               <i class="fa-solid fa-clock fa-lg text-secondaryColor"></i>
-              <p class="text-text uppercase font-bold">Time</p>
+              <p
+                class="text-text uppercase font-bold sm:text-[17px] md:text-[18px]"
+              >
+                Time
+              </p>
             </div>
-            <span id="time-count" class="text-[18px] font-bold">00:00:00</span>
+            <span
+              id="time-count"
+              class="text-[18px] sm:text-[19px] md:text-[20px] font-bold"
+              >00:00:00</span
+            >
           </div>
 
           <div
-            class="h-[80px] w-[140px] bg-secondaryColor rounded-md border-2 border-primaryColor flex flex-col items-center justify-between p-2 drop-shadow-md"
+            class="h-[80px] w-full max-w-[140px] xs:max-w-[170px] sm:max-w-[185px] md:max-w-[200px] bg-secondaryColor rounded-md border-2 border-primaryColor flex flex-col items-center justify-between p-2 drop-shadow-md"
           >
             <div class="flex items-center gap-2 font-title">
               <i class="fa-solid fa-up-down-left-right fa-lg text-accent"></i>
-              <p class="text-text uppercase font-bold">Moves</p>
+              <p class="text-text uppercase font-bold md:text-[18px]">Moves</p>
             </div>
-            <span id="moves-count" class="text-[18px] font-bold">0</span>
+            <span
+              id="moves-count"
+              class="text-[18px] sm:text-[19px] md:text-[20px] font-bold"
+              >0</span
+            >
           </div>
         </section>
       </section>
-      <!-- In Game Mobile Menu -->
-      <div
-        id="in-game-mobile-menu"
-        class="hidden md:hidden absolute bottom-3 right-3 bg-primaryColor border-2 border-text rounded-full h-[60px] w-[60px] items-center justify-center hover:bg-secondaryColor hover:border-accent drop-shadow-md"
-      >
-        <i class="fa-solid fa-pause fa-xl"></i>
-      </div>
       <!-- Game paused modal -->
       <div
         id="game-paused-modal"
@@ -334,7 +356,7 @@
             </button>
             <button
               id="resume-game-modal"
-              class="bg-transparent text-text uppercase border-2 border-secondaryBg hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[20px] rounded-md p-2"
+              class="bg-transparent text-text uppercase border-2 border-text hover:bg-secondaryColor hover:text-primaryColor transition-colors ease-out duration-300 hover:border-accent font-bold text-[20px] rounded-md p-2"
             >
               Resume Game
             </button>

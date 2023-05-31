@@ -11,7 +11,7 @@ import { stopTimer, resetTimer } from './timeCounter.js';
 
 const newGame = () => {
   movesCount.innerHTML = '0';
-  header.classList.remove('md:justify-between');
+  header.classList.replace('justify-between', 'justify-center');
   inGameMobileMenu.classList.replace('flex', 'hidden');
   game.classList.replace('flex', 'hidden');
   inGameMenu.classList.replace('flex', 'hidden');

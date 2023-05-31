@@ -20,7 +20,7 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
   const selectedIcons = icons[selectedIcon];
 
   inGameMenu.classList.replace('hidden', 'flex');
-  header.classList.add('md:justify-between');
+  header.classList.replace('justify-center', 'justify-between');
   inGameMobileMenu.classList.replace('hidden', 'flex');
   mainMenu.classList.replace('flex', 'hidden');
   game.classList.replace('hidden', 'flex');
@@ -54,7 +54,7 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
     const card = `
         <div id="card-${i}" class="rounded-full cursor-pointer">
             <div
-              class="relative shadow-xl transition-all duration-500  bg-secondaryColor text-text h-[70px] sm:h-[80px] md:h-[100px] lg:h-[110px] w-[70px] sm:w-[80px] md:w-[100px] lg:w-[110px] col-span-1 row-span-1 rounded-full"
+              class="relative shadow-xl transition-all duration-500  bg-secondaryColor text-text h-[65px] xs:h-[80px] sm:h-[90px] md:h-[100px] lg:h-[110px] w-[65px] xs:w-[80px] sm:w-[90px] md:w-[100px] lg:w-[110px] col-span-1 row-span-1 rounded-full"
             >
               <div class="front absolute inset-0 flex items-center justify-center">
                 ${sortedCards[i]}
