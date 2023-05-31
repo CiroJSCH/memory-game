@@ -62,13 +62,28 @@ export const getStats = () => {
 
   // Easy stats
   const easyGamesPlayed = document.getElementById('easy-games-played');
+  const easyBestTime = document.getElementById('easy-best-time');
+  const easyBestMoves = document.getElementById('easy-best-moves');
+
   easyGamesPlayed.innerHTML = easy.gamesPlayed.toString();
+  easyBestTime.innerHTML = easy.bestTime;
+  easyBestMoves.innerHTML = easy.bestMoves;
 
   //  Normal stats
   const normalGamesPlayed = document.getElementById('normal-games-played');
+  const normalBestTime = document.getElementById('normal-best-time');
+  const normalBestMoves = document.getElementById('normal-best-moves');
+
   normalGamesPlayed.innerHTML = normal.gamesPlayed.toString();
+  normalBestTime.innerHTML = normal.bestTime;
+  normalBestMoves.innerHTML = normal.bestMoves;
 
   // Hard stats
   const hardGamesPlayed = document.getElementById('hard-games-played');
+  const hardBestTime = document.getElementById('hard-best-time');
+  const hardBestMoves = document.getElementById('hard-best-moves');
+
   hardGamesPlayed.innerHTML = hard.gamesPlayed.toString();
+  hardBestTime.innerHTML = hard.bestTime;
+  hardBestMoves.innerHTML = hard.bestMoves;
 };
