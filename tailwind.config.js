@@ -13,6 +13,7 @@ module.exports = {
         secondaryBg: 'var(--secondary-bg)',
       },
       screens: {
+        xs: '340px',
         sm: '640px',
         md: '768px',
         lg: '1024px',
@@ -22,11 +23,6 @@ module.exports = {
       fontFamily: {
         text: ['Poppins', 'sans-serif'],
         title: ['Chakra Petch', 'sans-serif'],
-      },
-      backgroundImage: {
-        'gold-gradient': 'linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C)',
-        'silver-gradient': 'linear-gradient(to right, #AFAFAF, #F2F2F2, #A0A0A0, #F1F1F1, #8F8F8F)',
-        'bronze-gradient': 'linear-gradient(to right, #A77044, #F9D9B4, #A77044, #F9D9B4, #A77044)',
       },
     },
   },
