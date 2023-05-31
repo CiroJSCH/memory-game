@@ -23,6 +23,11 @@ module.exports = {
         text: ['Poppins', 'sans-serif'],
         title: ['Chakra Petch', 'sans-serif'],
       },
+      backgroundImage: {
+        'gold-gradient': 'linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C)',
+        'silver-gradient': 'linear-gradient(to right, #AFAFAF, #F2F2F2, #A0A0A0, #F1F1F1, #8F8F8F)',
+        'bronze-gradient': 'linear-gradient(to right, #A77044, #F9D9B4, #A77044, #F9D9B4, #A77044)',
+      },
     },
   },
   plugins: [],
