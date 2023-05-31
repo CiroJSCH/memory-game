@@ -1,5 +1,7 @@
 import { Stats, Difficulty, Icon } from '../../types/index.js';
 
+const stats: Stats = JSON.parse(localStorage.getItem('stats'));
+
 const mapIcons = {
   programming: '<i class="fa-solid fa-code fa-lg"></i>',
   animals: '<i class="fa-solid fa-paw fa-lg"></i>',
@@ -16,28 +18,35 @@ export const updateGeneralStats = (
 };
 
 export const updateGamesPlayed = (key: Difficulty) => {
-  const stats: Stats = JSON.parse(localStorage.getItem('stats'));
   stats['general'].gamesPlayed++;
   stats[key].gamesPlayed++;
   localStorage.setItem('stats', JSON.stringify(stats));
 };
 
 export const updateFavouriteIcon = (key: Icon) => {
-  const stats: Stats = JSON.parse(localStorage.getItem('stats'));
   stats.general.favouriteIcon[key]++;
   localStorage.setItem('stats', JSON.stringify(stats));
 };
 
 export const updateFavouriteDifficulty = (key: Difficulty) => {
-  const stats: Stats = JSON.parse(localStorage.getItem('stats'));
   stats.general.favouriteDifficulty[key]++;
   localStorage.setItem('stats', JSON.stringify(stats));
 };
 
+export const updateBestTime = (key: Difficulty, time: string) => {
+  stats[key].bestTime = time;
+  localStorage.setItem('stats', JSON.stringify(stats));
+};
+
+export const getBestTime = (key: Difficulty) => stats[key].bestTime;
+
+export const updateBestMoves = (key: Difficulty, time: string) => {
+  stats[key].bestMoves = time;
+  localStorage.setItem('stats', JSON.stringify(stats));
+};
+
 export const getStats = () => {
-  const { general, easy, normal, hard }: Stats = JSON.parse(
-    localStorage.getItem('stats'),
-  );
+  const { general, easy, normal, hard } = stats;
 
   // General stats
   const generalGamesPlayed = document.getElementById('general-games-played');

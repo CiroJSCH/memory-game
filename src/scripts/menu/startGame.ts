@@ -14,7 +14,12 @@ import { startTimer, stopTimer } from '../timeCounter.js';
 import newGame from '../newGame.js';
 import icons from '../../data/icons.js';
 import restartGame from '../restartGame.js';
-import { updateGeneralStats } from '../stats/updateStats.js';
+import {
+  getBestTime,
+  updateGeneralStats,
+  updateBestTime,
+} from '../stats/updateStats.js';
+import compareTimes from '../stats/compareTimes.js';
 
 type Icon = 'programming' | 'animals' | 'sports';
 
@@ -122,6 +127,16 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: Difficulty) => {
 
       if (foundPairs === cards / 2) {
         const elapsedTime = document.getElementById('time-count').innerHTML;
+        if (getBestTime(selectedDifficulty) !== '--') {
+          compareTimes(
+            elapsedTime,
+            getBestTime(selectedDifficulty),
+            selectedDifficulty,
+          );
+        } else {
+          updateBestTime(selectedDifficulty, elapsedTime);
+        }
+
         stopTimer();
         const gameFinishedModal = document.getElementById(
           'game-finished-modal',
