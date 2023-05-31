@@ -18,6 +18,8 @@ import {
   getBestTime,
   updateGeneralStats,
   updateBestTime,
+  updateBestMoves,
+  getBestMove,
 } from '../stats/updateStats.js';
 import compareTimes from '../stats/compareTimes.js';
 
@@ -135,6 +137,14 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: Difficulty) => {
           );
         } else {
           updateBestTime(selectedDifficulty, elapsedTime);
+        }
+
+        if (getBestMove(selectedDifficulty) !== '--') {
+          if (moves < parseInt(getBestMove(selectedDifficulty))) {
+            updateBestMoves(selectedDifficulty, moves.toString());
+          }
+        } else {
+          updateBestMoves(selectedDifficulty, moves.toString());
         }
 
         stopTimer();

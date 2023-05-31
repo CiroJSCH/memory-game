@@ -40,8 +40,10 @@ export const updateBestTime = (key: Difficulty, time: string) => {
 
 export const getBestTime = (key: Difficulty) => stats[key].bestTime;
 
-export const updateBestMoves = (key: Difficulty, time: string) => {
-  stats[key].bestMoves = time;
+export const getBestMove = (key: Difficulty) => stats[key].bestMoves;
+
+export const updateBestMoves = (key: Difficulty, moves: string) => {
+  stats[key].bestMoves = moves;
   localStorage.setItem('stats', JSON.stringify(stats));
 };
 
