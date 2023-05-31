@@ -9,14 +9,18 @@ import {
   newGameButton,
   restartGameButton,
 } from '../globals.js';
+import { Difficulty } from '../../types/index.js';
 import { startTimer, stopTimer } from '../timeCounter.js';
 import newGame from '../newGame.js';
 import icons from '../../data/icons.js';
 import restartGame from '../restartGame.js';
+import { updateGeneralStats } from '../stats/updateStats.js';
 
 type Icon = 'programming' | 'animals' | 'sports';
 
-const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
+const startGame = (selectedIcon: Icon, selectedDifficulty: Difficulty) => {
+  updateGeneralStats(selectedDifficulty, selectedIcon);
+
   const selectedIcons = icons[selectedIcon];
 
   inGameMenu.classList.replace('hidden', 'flex');

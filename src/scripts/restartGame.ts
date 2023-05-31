@@ -1,10 +1,9 @@
 import { resetTimer, stopTimer } from './timeCounter.js';
 import { cardsContainer, movesCount } from './globals.js';
 import startGame from './menu/startGame.js';
+import { Icon, Difficulty } from '../types/index.js';
 
-type Icon = 'programming' | 'animals' | 'sports';
-
-const restartGame = (selectedIcon: Icon, selectedDifficulty: string) => {
+const restartGame = (selectedIcon: Icon, selectedDifficulty: Difficulty) => {
   resetTimer();
   stopTimer();
   cardsContainer.innerHTML = '';
