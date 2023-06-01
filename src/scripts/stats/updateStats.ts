@@ -1,5 +1,9 @@
 import { Stats, Difficulty, Icon } from '../../types/index.js';
+import setInitialStats from './initialStats.js';
 
+if (localStorage.getItem('stats') === null) {
+  setInitialStats();
+}
 const stats: Stats = JSON.parse(localStorage.getItem('stats'));
 
 const mapIcons = {
@@ -42,6 +46,8 @@ export const updateFavouriteDifficulty = (key: Difficulty) => {
 export const updateBestTime = (key: Difficulty, time: string) => {
   stats[key].bestTime = time;
   localStorage.setItem('stats', JSON.stringify(stats));
+  const bestTime = document.getElementById('best-time');
+  bestTime.classList.replace('hidden', 'inline-block');
 };
 
 export const getBestTime = (key: Difficulty) => stats[key].bestTime;
@@ -51,6 +57,8 @@ export const getBestMove = (key: Difficulty) => stats[key].bestMoves;
 export const updateBestMoves = (key: Difficulty, moves: string) => {
   stats[key].bestMoves = moves;
   localStorage.setItem('stats', JSON.stringify(stats));
+  const bestMoves = document.getElementById('best-moves');
+  bestMoves.classList.replace('hidden', 'inline-block');
 };
 
 export const getStats = () => {
