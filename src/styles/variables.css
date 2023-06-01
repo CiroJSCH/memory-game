@@ -35,3 +35,25 @@
   --primary-bg: #f3dde7;
   --secondary-bg: #e7d2db;
 }
+
+.gold-text-gradient {
+  background: linear-gradient(90deg, #ca9c12 0%, #e1ae14 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zoom-text-animation {
+  animation: zoom 1s ease-in-out infinite;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
