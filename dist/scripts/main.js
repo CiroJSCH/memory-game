@@ -6,42 +6,42 @@ import startGame from './menu/startGame.js';
 import { startTimer, stopTimer } from './timeCounter.js';
 import restartGame from './restartGame.js';
 import newGame from './newGame.js';
-import setInitialStats from './stats/initialStats.js';
+
 let selectedIcon = 'programming';
 let selectedDifficulty = 'easy';
 updateIcon((icon) => {
-    selectedIcon = icon;
+  selectedIcon = icon;
 });
 updateDifficulty((difficulty) => {
-    selectedDifficulty = difficulty;
+  selectedDifficulty = difficulty;
 });
 updateColor();
-if (localStorage.getItem('stats') === null) {
-    setInitialStats();
-}
+
 const main = () => {
-    const startGameButton = document.getElementById('start-game-button');
-    startGameButton.addEventListener('click', () => startGame(selectedIcon, selectedDifficulty));
-    inGameMobileMenu.addEventListener('click', () => {
-        const gamePausedModal = document.getElementById('game-paused-modal');
-        gamePausedModal.classList.replace('hidden', 'flex');
-        const time = document.getElementById('time-count').innerHTML;
-        stopTimer();
-        const restartGameModal = document.getElementById('restart-game-modal');
-        const newGameModal = document.getElementById('new-game-modal');
-        const resumeGameModal = document.getElementById('resume-game-modal');
-        restartGameModal.addEventListener('click', () => {
-            gamePausedModal.classList.replace('flex', 'hidden');
-            restartGame(selectedIcon, selectedDifficulty);
-        });
-        newGameModal.addEventListener('click', () => {
-            gamePausedModal.classList.replace('flex', 'hidden');
-            newGame();
-        });
-        resumeGameModal.addEventListener('click', () => {
-            gamePausedModal.classList.replace('flex', 'hidden');
-            startTimer(time);
-        });
+  const startGameButton = document.getElementById('start-game-button');
+  startGameButton.addEventListener('click', () =>
+    startGame(selectedIcon, selectedDifficulty),
+  );
+  inGameMobileMenu.addEventListener('click', () => {
+    const gamePausedModal = document.getElementById('game-paused-modal');
+    gamePausedModal.classList.replace('hidden', 'flex');
+    const time = document.getElementById('time-count').innerHTML;
+    stopTimer();
+    const restartGameModal = document.getElementById('restart-game-modal');
+    const newGameModal = document.getElementById('new-game-modal');
+    const resumeGameModal = document.getElementById('resume-game-modal');
+    restartGameModal.addEventListener('click', () => {
+      gamePausedModal.classList.replace('flex', 'hidden');
+      restartGame(selectedIcon, selectedDifficulty);
     });
+    newGameModal.addEventListener('click', () => {
+      gamePausedModal.classList.replace('flex', 'hidden');
+      newGame();
+    });
+    resumeGameModal.addEventListener('click', () => {
+      gamePausedModal.classList.replace('flex', 'hidden');
+      startTimer(time);
+    });
+  });
 };
 main();
