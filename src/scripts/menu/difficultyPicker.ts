@@ -1,6 +1,7 @@
+import { Difficulty } from '../../types/index.js';
 const difficultyPickers = document.querySelectorAll('.difficulty-picker');
 
-const updateDifficulty = (callback: (difficulty: string) => void): void => {
+const updateDifficulty = (callback: (difficulty: Difficulty) => void): void => {
   let selectedDifficulty = '';
 
   const handleClick = (event: Event): void => {
@@ -15,7 +16,7 @@ const updateDifficulty = (callback: (difficulty: string) => void): void => {
       'text-secondaryColor',
     );
 
-    callback(selectedDifficulty);
+    callback(selectedDifficulty as Difficulty);
   };
 
   difficultyPickers.forEach((difficultyPicker) => {

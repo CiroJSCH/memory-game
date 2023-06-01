@@ -9,14 +9,25 @@ import {
   newGameButton,
   restartGameButton,
 } from '../globals.js';
+import { Difficulty } from '../../types/index.js';
 import { startTimer, stopTimer } from '../timeCounter.js';
 import newGame from '../newGame.js';
 import icons from '../../data/icons.js';
 import restartGame from '../restartGame.js';
+import {
+  getBestTime,
+  updateGeneralStats,
+  updateBestTime,
+  updateBestMoves,
+  getBestMove,
+} from '../stats/updateStats.js';
+import compareTimes from '../stats/compareTimes.js';
 
 type Icon = 'programming' | 'animals' | 'sports';
 
-const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
+const startGame = (selectedIcon: Icon, selectedDifficulty: Difficulty) => {
+  updateGeneralStats(selectedDifficulty, selectedIcon);
+
   const selectedIcons = icons[selectedIcon];
 
   inGameMenu.classList.replace('hidden', 'flex');
@@ -118,6 +129,24 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
 
       if (foundPairs === cards / 2) {
         const elapsedTime = document.getElementById('time-count').innerHTML;
+        if (getBestTime(selectedDifficulty) !== '--') {
+          compareTimes(
+            elapsedTime,
+            getBestTime(selectedDifficulty),
+            selectedDifficulty,
+          );
+        } else {
+          updateBestTime(selectedDifficulty, elapsedTime);
+        }
+
+        if (getBestMove(selectedDifficulty) !== '--') {
+          if (moves < parseInt(getBestMove(selectedDifficulty))) {
+            updateBestMoves(selectedDifficulty, moves.toString());
+          }
+        } else {
+          updateBestMoves(selectedDifficulty, moves.toString());
+        }
+
         stopTimer();
         const gameFinishedModal = document.getElementById(
           'game-finished-modal',
@@ -146,13 +175,13 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: string) => {
 
       setTimeout(() => {
         cardsContainer.classList.remove('pointer-events-none');
-      }, 500);
+      }, 300);
     } else {
       setTimeout(() => {
         backCard1.classList.replace('opacity-0', 'opacity-100');
         backCard2.classList.replace('opacity-0', 'opacity-100');
         cardsContainer.classList.remove('pointer-events-none');
-      }, 1000);
+      }, 850);
     }
     selectedCards.length = 0;
   };
