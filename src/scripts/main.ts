@@ -6,11 +6,12 @@ import startGame from './menu/startGame.js';
 import { startTimer, stopTimer } from './timeCounter.js';
 import restartGame from './restartGame.js';
 import newGame from './newGame.js';
-
-type Icon = 'programming' | 'animals' | 'sports';
+import setInitialStats from './stats/initialStats.js';
+import { Difficulty, Icon } from '../types/index.js';
 
 let selectedIcon: Icon = 'programming';
-let selectedDifficulty = 'easy';
+let selectedDifficulty: Difficulty = 'easy';
+
 updateIcon((icon: Icon) => {
   selectedIcon = icon;
 });
@@ -20,6 +21,10 @@ updateDifficulty((difficulty) => {
 });
 
 updateColor();
+
+if (localStorage.getItem('stats') === null) {
+  setInitialStats();
+}
 
 const main = () => {
   const startGameButton = document.getElementById('start-game-button');
