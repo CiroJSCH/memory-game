@@ -5,6 +5,10 @@ const compareTimes = (elapsedTime, previousTime, difficulty) => {
     if (time1Obj < time2Obj) {
         updateBestTime(difficulty, elapsedTime);
     }
+    else {
+        const bestTime = document.getElementById('best-time');
+        bestTime.classList.replace('inline-block', 'hidden');
+    }
 };
 const parseTime = (time) => {
     const parts = time.split(':');

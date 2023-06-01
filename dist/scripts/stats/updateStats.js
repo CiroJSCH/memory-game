@@ -34,12 +34,16 @@ export const updateFavouriteDifficulty = (key) => {
 export const updateBestTime = (key, time) => {
     stats[key].bestTime = time;
     localStorage.setItem('stats', JSON.stringify(stats));
+    const bestTime = document.getElementById('best-time');
+    bestTime.classList.replace('hidden', 'inline-block');
 };
 export const getBestTime = (key) => stats[key].bestTime;
 export const getBestMove = (key) => stats[key].bestMoves;
 export const updateBestMoves = (key, moves) => {
     stats[key].bestMoves = moves;
     localStorage.setItem('stats', JSON.stringify(stats));
+    const bestMoves = document.getElementById('best-moves');
+    bestMoves.classList.replace('hidden', 'inline-block');
 };
 export const getStats = () => {
     const { general, easy, normal, hard } = stats;

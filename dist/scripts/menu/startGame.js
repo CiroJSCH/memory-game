@@ -84,6 +84,10 @@ const startGame = (selectedIcon, selectedDifficulty) => {
                     if (moves < parseInt(getBestMove(selectedDifficulty))) {
                         updateBestMoves(selectedDifficulty, moves.toString());
                     }
+                    else {
+                        const bestMoves = document.getElementById('best-moves');
+                        bestMoves.classList.replace('inline-block', 'hidden');
+                    }
                 }
                 else {
                     updateBestMoves(selectedDifficulty, moves.toString());

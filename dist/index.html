@@ -107,7 +107,7 @@
       <!-- Main Menu -->
       <section
         id="main-menu"
-        class="bg-secondaryColor w-[90%] max-w-[450px] md:max-w-[500px] mx-auto h-auto rounded-10px flex flex-col p-3 md:p-5 gap-4 drop-shadow-xl"
+        class="bg-secondaryColor pb-[20px] w-[90%] max-w-[450px] md:max-w-[500px] mx-auto h-auto rounded-10px flex flex-col p-3 md:p-5 gap-4 drop-shadow-xl"
       >
         <!-- Color selector -->
         <div>
@@ -254,7 +254,7 @@
       <!-- Game stats -->
       <section
         id="game-stats"
-        class="hidden flex-col gap-5 items-center w-full max-w-[450px] md:max-w-[1000px] pb-[20px]"
+        class="hidden flex-col gap-5 items-center w-full max-w-[450px] md:max-w-[1000px]"
       >
         <!-- Header -->
         <div class="flex items-center justify-between w-full px-1 xs:px-2">
@@ -541,9 +541,17 @@
                   TIME
                 </p>
               </div>
-              <span id="total-time" class="font-bold italic md:text-[18px]"
-                >00:00:00</span
-              >
+
+              <div class="flex items-center gap-2">
+                <span
+                  id="best-time"
+                  class="hidden gold-text-gradient zoom-text-animation uppercase font-title font-semibold"
+                  >best</span
+                >
+                <span id="total-time" class="font-bold italic md:text-[18px]"
+                  >00:00:00</span
+                >
+              </div>
             </div>
             <div
               class="bg-primaryBg flex items-center justify-between p-2 border border-accent rounded-md"
@@ -556,9 +564,16 @@
                   MOVES
                 </p>
               </div>
-              <span id="total-moves" class="font-bold italic md:text-[18px]"
-                >00</span
-              >
+              <div class="flex items-center gap-2">
+                <span
+                  id="best-moves"
+                  class="hidden gold-text-gradient zoom-text-animation uppercase font-title font-semibold"
+                  >best</span
+                >
+                <span id="total-moves" class="font-bold italic md:text-[18px]"
+                  >00</span
+                >
+              </div>
             </div>
           </div>
           <!-- Modal footer -->
