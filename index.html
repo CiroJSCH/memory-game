@@ -14,12 +14,12 @@
   </head>
   <body class="bg-primaryBg transition-colors duration-200 ease-in-out">
     <main
-      class="min-h-screen relative w-full mx-auto flex flex-col items-center justify-center py-[20px]"
+      class="min-h-screen relative w-full mx-auto flex flex-col items-center justify-center"
     >
       <!-- Header -->
       <section
         id="header"
-        class="mb-[50px] px-2 xs:px-3 md:px-0 w-full max-w-[450px] md:max-w-[500px] lg:max-w-[600px] flex justify-center items-center"
+        class="pt-[20px] mb-[50px] px-2 xs:px-3 md:px-0 w-full max-w-[450px] md:max-w-[500px] lg:max-w-[600px] flex justify-center items-center"
       >
         <!-- Logo -->
         <div class="flex flex-col justify-center gap-2 select-none">
@@ -107,7 +107,7 @@
       <!-- Main Menu -->
       <section
         id="main-menu"
-        class="bg-secondaryColor w-[90%] max-w-[450px] md:max-w-[500px] mx-auto h-auto rounded-10px flex flex-col p-3 md:p-5 gap-4 drop-shadow-xl"
+        class="bg-secondaryColor pb-[20px] w-[90%] max-w-[450px] md:max-w-[500px] mx-auto h-auto rounded-10px flex flex-col p-3 md:p-5 gap-4 drop-shadow-xl"
       >
         <!-- Color selector -->
         <div>
@@ -206,7 +206,7 @@
       <!-- Game -->
       <section
         id="game"
-        class="hidden flex-col items-center justify-around h-auto w-[100%] max-w-[1200px]"
+        class="pb-[20px] hidden flex-col items-center justify-around h-auto w-[100%] max-w-[1200px]"
       >
         <!-- Cards Container -->
         <section
@@ -477,7 +477,7 @@
       <!-- Game paused modal -->
       <div
         id="game-paused-modal"
-        class="hidden absolute top-0 right-0 h-screen w-screen bg-black/60 items-center justify-center"
+        class="hidden absolute top-0 right-0 h-full min-h-screen w-screen bg-black/60 items-center justify-center"
       >
         <section
           class="bg-secondaryColor rounded-md w-[90%] h-auto max-w-[450px] p-5"
@@ -514,7 +514,7 @@
       <!-- Game finished modal -->
       <div
         id="game-finished-modal"
-        class="hidden absolute top-0 right-0 h-screen w-screen bg-black/60 items-center justify-center"
+        class="hidden absolute top-0 right-0 h-full min-h-screen w-screen bg-black/60 items-center justify-center"
       >
         <section
           class="bg-secondaryColor rounded-md w-[90%] h-auto max-w-[450px] p-5"
@@ -541,9 +541,17 @@
                   TIME
                 </p>
               </div>
-              <span id="total-time" class="font-bold italic md:text-[18px]"
-                >00:00:00</span
-              >
+
+              <div class="flex items-center gap-2">
+                <span
+                  id="best-time"
+                  class="hidden gold-text-gradient zoom-text-animation uppercase font-title font-semibold"
+                  >best</span
+                >
+                <span id="total-time" class="font-bold italic md:text-[18px]"
+                  >00:00:00</span
+                >
+              </div>
             </div>
             <div
               class="bg-primaryBg flex items-center justify-between p-2 border border-accent rounded-md"
@@ -556,9 +564,16 @@
                   MOVES
                 </p>
               </div>
-              <span id="total-moves" class="font-bold italic md:text-[18px]"
-                >00</span
-              >
+              <div class="flex items-center gap-2">
+                <span
+                  id="best-moves"
+                  class="hidden gold-text-gradient zoom-text-animation uppercase font-title font-semibold"
+                  >best</span
+                >
+                <span id="total-moves" class="font-bold italic md:text-[18px]"
+                  >00</span
+                >
+              </div>
             </div>
           </div>
           <!-- Modal footer -->
