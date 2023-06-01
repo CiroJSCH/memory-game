@@ -8,6 +8,12 @@ const mapIcons = {
   sports: '<i class="fa-solid fa-futbol fa-lg"></i>',
 };
 
+const mapDifficulty = {
+  easy: '<i class="fa-solid fa-face-smile-beam fa-lg"></i>',
+  normal: '<i class="fa-solid fa-face-rolling-eyes fa-lg"></i>',
+  hard: '<i class="fa-solid fa-face-tired fa-lg"></i>',
+};
+
 export const updateGeneralStats = (
   selectedDifficulty: Difficulty,
   selectedIcon: Icon,
@@ -69,7 +75,7 @@ export const getStats = () => {
   favouriteDifficulty.innerHTML =
     general.favouriteDifficulty[difficulty as Difficulty] == 0
       ? '--'
-      : difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+      : mapDifficulty[difficulty as Difficulty];
 
   // Easy stats
   const easyGamesPlayed = document.getElementById('easy-games-played');
