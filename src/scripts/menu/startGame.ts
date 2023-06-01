@@ -181,7 +181,7 @@ const startGame = (selectedIcon: Icon, selectedDifficulty: Difficulty) => {
         backCard1.classList.replace('opacity-0', 'opacity-100');
         backCard2.classList.replace('opacity-0', 'opacity-100');
         cardsContainer.classList.remove('pointer-events-none');
-      }, 1000);
+      }, 850);
     }
     selectedCards.length = 0;
   };
